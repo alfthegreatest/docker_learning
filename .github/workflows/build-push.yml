@@ -10,23 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Проверка, что секреты видны (без вывода пароля!)
-      - name: Check secrets
-        run: |
-          if [ -z "${{ secrets.REGISTRY_USER }}" ]; then
-            echo "REGISTRY_USER is empty!"
-            exit 1
-          fi
-          if [ -z "${{ secrets.REGISTRY_PASSWORD }}" ]; then
-            echo "REGISTRY_PASS is empty!"
-            exit 1
-          fi
-          if [ -z "${{ secrets.REGISTRY_URL }}" ]; then
-            echo "REGISTRY_URL is empty!"
-            exit 1
-          fi
-          echo "All secrets are set."
-          
       # Docker login через официальный Action
       - name: Docker login
         uses: docker/login-action@v2
